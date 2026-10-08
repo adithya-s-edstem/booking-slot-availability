@@ -2,23 +2,33 @@ export function program(bookings, D) {
   const START = "09:00";
   const END = "18:00";
 
+  function getSplitTimeAsNumber(time) {
+    let [h, m] = time.split(":");
+    h = Number(h);
+    m = Number(m);
+    return [h, m];
+  }
+
+  function padZero(number) {
+    if (number < 10 && number > -1) return `0${number}`;
+    return number;
+  }
+
   function getIncrementedTime(increment, current) {
-    const [current_h, current_m] = current.split(":");
-    let new_h = Number(current_h);
-    let new_m = Number(current_m) + increment;
+    let [new_h, new_m] = getSplitTimeAsNumber(current);
+    new_m = new_m + increment;
+
     if (new_m >= 60) {
       new_m = Math.abs(60 - new_m);
       new_h = new_h + 1;
     }
-    if (new_h < 10) new_h = `0${new_h}`;
-    if (new_m < 10) new_m = `0${new_m}`;
-    return `${new_h}:${new_m}`;
+
+    return `${padZero(new_h)}:${padZero(new_m)}`;
   }
 
   function checkIfTimeAisGreaterThanTimeB(time_a, time_b) {
-    let [a_h, a_m] = time_a.split(":");
-    let [b_h, b_m] = time_b.split(":");
-    [a_h, a_m, b_h, b_m] = [Number(a_h), Number(a_m), Number(b_h), Number(b_m)];
+    let [a_h, a_m] = getSplitTimeAsNumber(time_a);
+    let [b_h, b_m] = getSplitTimeAsNumber(time_b);
 
     if (a_h > b_h) return true;
 
@@ -41,10 +51,18 @@ export function program(bookings, D) {
       i = getIncrementedTime(interval, i);
       intervals.push(createIntervalString(tmp_start, i));
     } while (checkIfTimeAisGreaterThanTimeB(END, i));
-    console.log(intervals);
+    return intervals;
   }
 
-  getAllIntervals(45);
+  //  console.log(getAllIntervals(30))
+
+  // Delete after
+  const tmp_bookings = ["09:00-09:30", "11:00-13:00", "14:00-18:00"];
+  //
+
+  function checkIfInBetween(newInterval, bookedIntervals) {}
+
+  console.log(checkIfInBetween("08:10-08:55"));
 
   return null;
 }
