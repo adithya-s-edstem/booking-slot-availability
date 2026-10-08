@@ -29,17 +29,22 @@ export function program(bookings, D) {
     return false;
   }
 
+  function createIntervalString(start, end) {
+    return `${start}-${end}`;
+  }
+
   function getAllIntervals(interval) {
     let i = START;
     const intervals = [];
     do {
-      intervals.push(i)
+      let tmp_start = i;
       i = getIncrementedTime(interval, i);
+      intervals.push(createIntervalString(tmp_start, i));
     } while (checkIfTimeAisGreaterThanTimeB(END, i));
-    console.log(intervals)
+    console.log(intervals);
   }
 
-  getAllIntervals(30);
+  getAllIntervals(45);
 
   return null;
 }
