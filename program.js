@@ -70,33 +70,49 @@ export function program(bookings, D) {
     return intervals;
   }
 
-  console.log("getAllIntervals", getAllIntervals(30), "\n");
-
   // Delete after
   const tmp_bookings = ["09:00-09:30", "11:00-13:00", "14:00-18:00"];
 
   const tmp_booking = "10:00-10:30";
   //
 
-  function checkIfInBetween(newInterval, bookedIntervals) {
-    const [newInterval_start, newInterval_end] = getSplitInterval(newInterval);
+  // function checkIfInBetween(newInterval, bookedInterval) {
+  //   const [newInterval_start, newInterval_end] = getSplitInterval(newInterval);
 
-    const [bookedInterval_start, bookedInterval_end] =
-      getSplitInterval(tmp_booking);
+  //   const [bookedInterval_start, bookedInterval_end] =
+  //     getSplitInterval(bookedInterval);
 
-    console.log("new", newInterval_start, newInterval_end);
-    console.log("booked", bookedInterval_start, bookedInterval_end);
+  //   console.log("new", newInterval_start, newInterval_end);
+  //   console.log("booked", bookedInterval_start, bookedInterval_end);
 
-    if (
-      compareTime(newInterval_start, bookedInterval_start, "greater") &&
-      compareTime(newInterval_end, bookedInterval_end, "lesser")
-    )
-      return true;
 
-    return false;
+
+  //   if (compareTime(newInterval_start, bookedInterval_start, "greater")) console.log("k")
+
+  //   return false;
+  // }
+
+  function checkIfInBetween(input, start, end) {
+    const [input_h, input_m] = getSplitTimeAsNumber(input)
+    const [start_h, start_m] = getSplitTimeAsNumber(start)
+    const [end_h, end_m] = getSplitTimeAsNumber(end)
+
+    const SAME_HOUR = input_h === start_h && input_h === end_h;
+
+    if (SAME_HOUR) {
+      if (input_m >= start_m && input_m <= end_m) return true;
+      return false
+    }
+    
+    return null
   }
 
-  console.log("is in between", checkIfInBetween("10:15-10:45"), "\n");
+  console.log("is in between", checkIfInBetween("10:15", "10:00", "10:30"), "\n");
+  console.log("is in between", checkIfInBetween("10:00", "10:00", "10:30"), "\n");
+  console.log("is in between", checkIfInBetween("10:30", "10:00", "10:30"), "\n");
+  console.log("is in between", checkIfInBetween("09:15", "10:00", "10:30"), "\n");
+  console.log("is in between", checkIfInBetween("10:45", "10:00", "10:30"), "\n");
+  console.log("is in between", checkIfInBetween("11:00", "10:00", "10:30"), "\n");
 
   return null;
 }
