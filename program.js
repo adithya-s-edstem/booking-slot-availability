@@ -1,4 +1,4 @@
-export function program(bookings, D) {
+export function findFreeSlots(bookings, D) {
   const START = "09:00";
   const END = "18:00";
 

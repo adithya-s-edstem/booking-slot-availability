@@ -1,1 +1,1 @@
-`node tests.js`
+`node run.js`
