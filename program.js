@@ -70,26 +70,6 @@ export function program(bookings, D) {
     return intervals;
   }
 
-  // Delete after
-  const tmp_bookings = ["09:00-09:30", "11:00-13:00", "14:00-18:00"];
-
-  const tmp_booking = "10:00-10:30";
-  //
-
-  // function checkIfInBetween(newInterval, bookedInterval) {
-  //   const [newInterval_start, newInterval_end] = getSplitInterval(newInterval);
-
-  //   const [bookedInterval_start, bookedInterval_end] =
-  //     getSplitInterval(bookedInterval);
-
-  //   console.log("new", newInterval_start, newInterval_end);
-  //   console.log("booked", bookedInterval_start, bookedInterval_end);
-
-  //   if (compareTime(newInterval_start, bookedInterval_start, "greater")) console.log("k")
-
-  //   return false;
-  // }
-
   function checkIfInBetween(input, start, end) {
     const [input_h, input_m] = getSplitTimeAsNumber(input);
     const [start_h, start_m] = getSplitTimeAsNumber(start);
@@ -121,53 +101,58 @@ export function program(bookings, D) {
   function checkIfIntervalInBetween(interval, start, end) {
     const [interval_start, interval_end] = getSplitInterval(interval);
 
-    const IS_INTERVAL_START_IN_BETWEEN = checkIfInBetween(interval_start, start, end);
+    const IS_INTERVAL_START_IN_BETWEEN = checkIfInBetween(
+      interval_start,
+      start,
+      end,
+    );
     if (IS_INTERVAL_START_IN_BETWEEN) return true;
 
-    const IS_INTERVAL_END_IN_BETWEEN = checkIfInBetween(interval_end, start, end);
+    const IS_INTERVAL_END_IN_BETWEEN = checkIfInBetween(
+      interval_end,
+      start,
+      end,
+    );
     if (IS_INTERVAL_END_IN_BETWEEN) return true;
 
-    const IS_START_IN_BETWEEN_INTERVAL = checkIfInBetween(start, interval_start, interval_end)
+    const IS_START_IN_BETWEEN_INTERVAL = checkIfInBetween(
+      start,
+      interval_start,
+      interval_end,
+    );
     if (IS_START_IN_BETWEEN_INTERVAL) return true;
 
-    const IS_END_IN_BETWEEN_INTERVAL = checkIfInBetween(end, interval_start, interval_end)
-    if (IS_END_IN_BETWEEN_INTERVAL) return true
+    const IS_END_IN_BETWEEN_INTERVAL = checkIfInBetween(
+      end,
+      interval_start,
+      interval_end,
+    );
+    if (IS_END_IN_BETWEEN_INTERVAL) return true;
 
     return false;
   }
 
-  // function testCheckIfInBetween(input, start, end) {
-  //   const result = checkIfInBetween(input, start, end);
-  //   console.log(`${input} is between ${start} and ${end}: ${result}\n`);
-  // }
+  function checkIfIntervalInBetweenInterval(new_interval, booked_interval) {
+    const [start, end] = getSplitInterval(booked_interval);
+    return checkIfIntervalInBetween(new_interval, start, end);
+  }
 
-  // testCheckIfInBetween("10:15", "10:00", "10:30");
-  // testCheckIfInBetween("10:00", "10:00", "10:30");
-  // testCheckIfInBetween("10:30", "10:00", "10:30");
-  // testCheckIfInBetween("09:15", "10:00", "10:30");
-  // testCheckIfInBetween("10:45", "10:00", "10:30");
-  // testCheckIfInBetween("11:00", "10:00", "10:30");
-  // testCheckIfInBetween("10:10", "10:20", "10:30");
-  // testCheckIfInBetween("10:10", "10:20", "11:00");
-  // testCheckIfInBetween("10:40", "09:20", "10:20");
-  // testCheckIfInBetween("07:40", "09:20", "10:20");
-  // testCheckIfInBetween("15:40", "09:20", "10:20");
-  // testCheckIfInBetween("13:00", "06:00", "18:00");
-  // testCheckIfInBetween("09:40", "10:00", "10:30");
-  //   testCheckIfInBetween("10:50", "10:00", "10:30");
+  function isInBooking(interval) {
+    let flag = false;
+    bookings.map((booking) => {
+      if (!flag && checkIfIntervalInBetweenInterval(interval, booking))
+        flag = true;
+    });
+    return flag;
+  }
 
-  // console.log("---")
+  const intervals = getAllIntervals(D);
 
-    // function testCheckIfIntervalInBetween(input, start, end) {
-    // const result = checkIfIntervalInBetween(input, start, end);
-    // console.log(`${input} is between ${start} and ${end}: ${result}\n`);
-    // }
-  
-  // testCheckIfIntervalInBetween("10:40-10:50", "10:00", "10:30")
-  // testCheckIfIntervalInBetween("09:40-10:50", "10:00", "10:30")
-  // testCheckIfIntervalInBetween("10:40-11:40", "10:00", "10:30")
-  // testCheckIfIntervalInBetween("11:00-12:00", "10:00", "10:30")
-  // testCheckIfIntervalInBetween("11:00-12:00", "10:00", "13:30")
-  
-  return null;
+  const free_intervals = [];
+
+  intervals.map((interval) => {
+    if (!isInBooking(interval)) free_intervals.push(interval);
+  });
+
+  return free_intervals;
 }
