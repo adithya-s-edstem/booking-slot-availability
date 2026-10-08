@@ -118,6 +118,24 @@ export function program(bookings, D) {
     return true;
   }
 
+  function checkIfIntervalInBetween(interval, start, end) {
+    const [interval_start, interval_end] = getSplitInterval(interval);
+
+    const IS_INTERVAL_START_IN_BETWEEN = checkIfInBetween(interval_start, start, end);
+    if (IS_INTERVAL_START_IN_BETWEEN) return true;
+
+    const IS_INTERVAL_END_IN_BETWEEN = checkIfInBetween(interval_end, start, end);
+    if (IS_INTERVAL_END_IN_BETWEEN) return true;
+
+    const IS_START_IN_BETWEEN_INTERVAL = checkIfInBetween(start, interval_start, interval_end)
+    if (IS_START_IN_BETWEEN_INTERVAL) return true;
+
+    const IS_END_IN_BETWEEN_INTERVAL = checkIfInBetween(end, interval_start, interval_end)
+    // if (IS_END_IN_BETWEEN_INTERVAL) return true;
+
+    return false;
+  }
+
   function testCheckIfInBetween(input, start, end) {
     const result = checkIfInBetween(input, start, end);
     console.log(`${input} is between ${start} and ${end}: ${result}\n`);
@@ -135,6 +153,19 @@ export function program(bookings, D) {
   testCheckIfInBetween("07:40", "09:20", "10:20");
   testCheckIfInBetween("15:40", "09:20", "10:20");
   testCheckIfInBetween("13:00", "06:00", "18:00");
+  testCheckIfInBetween("09:40", "10:00", "10:30");
+    testCheckIfInBetween("10:50", "10:00", "10:30");
+
+  console.log("---")
+
+    function testCheckIfIntervalInBetween(input, start, end) {
+    const result = checkIfIntervalInBetween(input, start, end);
+    console.log(`${input} is between ${start} and ${end}: ${result}\n`);
+    }
+  
+  testCheckIfIntervalInBetween("10:40-10:50", "10:00", "10:30")
+  testCheckIfIntervalInBetween("09:40-10:50", "10:00", "10:30")
+  testCheckIfIntervalInBetween("10:20-11:40", "10:00", "10:30")
 
   return null;
 }
