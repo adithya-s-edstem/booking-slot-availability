@@ -3,10 +3,10 @@ import { program } from "./program.js";
 function assert(message, expected, input) {
   const actual = program(input);
   if (actual === expected) {
-    console.log(`PASS: ${message}`);
+    console.log(`PASS: ${message}\n${actual}\n`);
     return;
   }
-  console.log(`FAIL: ${message}`);
+  console.log(`FAIL: ${message}\n${actual}\n`);
   return;
 }
 
