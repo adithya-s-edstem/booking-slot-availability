@@ -42,7 +42,7 @@ export function program(bookings, D) {
           if (a_m > b_m) return true;
         }
         return false;
-      
+
       case "lesser":
         if (a_h < b_h) return true;
         if (a_h === b_h) {
@@ -85,44 +85,42 @@ export function program(bookings, D) {
   //   console.log("new", newInterval_start, newInterval_end);
   //   console.log("booked", bookedInterval_start, bookedInterval_end);
 
-
-
   //   if (compareTime(newInterval_start, bookedInterval_start, "greater")) console.log("k")
 
   //   return false;
   // }
 
   function checkIfInBetween(input, start, end) {
-    const [input_h, input_m] = getSplitTimeAsNumber(input)
-    const [start_h, start_m] = getSplitTimeAsNumber(start)
-    const [end_h, end_m] = getSplitTimeAsNumber(end)
+    const [input_h, input_m] = getSplitTimeAsNumber(input);
+    const [start_h, start_m] = getSplitTimeAsNumber(start);
+    const [end_h, end_m] = getSplitTimeAsNumber(end);
+
+    if (input_h < start_h || input_h > end_h) return false;
 
     const SAME_HOUR = input_h === start_h && input_h === end_h;
-
     if (SAME_HOUR) {
       if (input_m >= start_m && input_m <= end_m) return true;
-      return false
+      return false;
     }
 
     const STARTING_IN_SAME_HOUR = input_h === start_h && input_h !== end_h;
-
     if (STARTING_IN_SAME_HOUR) {
       if (input_m >= start_m) return true;
-      return false
+      return false;
     }
 
     const ENDING_IN_SAME_HOUR = input_h === end_h && input_h !== start_h;
-
     if (ENDING_IN_SAME_HOUR) {
-      return false
+      if (input_m <= end_m) return true;
+      return false;
     }
 
-    return null
+    return true;
   }
 
   function testCheckIfInBetween(input, start, end) {
-    const result = checkIfInBetween(input, start, end)
-    console.log(`${input} is between ${start} and ${end}: ${result}\n`)
+    const result = checkIfInBetween(input, start, end);
+    console.log(`${input} is between ${start} and ${end}: ${result}\n`);
   }
 
   testCheckIfInBetween("10:15", "10:00", "10:30");
@@ -131,10 +129,12 @@ export function program(bookings, D) {
   testCheckIfInBetween("09:15", "10:00", "10:30");
   testCheckIfInBetween("10:45", "10:00", "10:30");
   testCheckIfInBetween("11:00", "10:00", "10:30");
+  testCheckIfInBetween("10:10", "10:20", "10:30");
   testCheckIfInBetween("10:10", "10:20", "11:00");
   testCheckIfInBetween("10:40", "09:20", "10:20");
   testCheckIfInBetween("07:40", "09:20", "10:20");
   testCheckIfInBetween("15:40", "09:20", "10:20");
+  testCheckIfInBetween("13:00", "06:00", "18:00");
 
   return null;
 }
