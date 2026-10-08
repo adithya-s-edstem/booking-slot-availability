@@ -1,13 +1,17 @@
 import { program } from "./program.js";
 
+function log(status, message, bookings, expected, actual) {
+  console.log(`${status ? 'PASS' : 'FAIL'}: ${message}\n Bookings: ${bookings}\n Expected: ${expected}\n Actual: ${actual}\n`)
+}
+
 function assert(message, expected, input) {
+  const bookings = input[0];
   const actual = program(...input);
-  if (actual === expected) {
-    console.log(`PASS: ${message}\n Expected: ${expected}\n Actual: ${actual}\n`);
-    return;
-  }
-  console.log(`FAIL: ${message}\n Expected: ${expected}\n Actual: ${actual}\n`);
-  return;
+
+  let status = false;
+  if (actual === expected) status = true;
+
+  log(status, message, bookings, expected, actual)
 }
 
 function tests() {
