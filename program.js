@@ -131,41 +131,43 @@ export function program(bookings, D) {
     if (IS_START_IN_BETWEEN_INTERVAL) return true;
 
     const IS_END_IN_BETWEEN_INTERVAL = checkIfInBetween(end, interval_start, interval_end)
-    // if (IS_END_IN_BETWEEN_INTERVAL) return true;
+    if (IS_END_IN_BETWEEN_INTERVAL) return true
 
     return false;
   }
 
-  function testCheckIfInBetween(input, start, end) {
-    const result = checkIfInBetween(input, start, end);
-    console.log(`${input} is between ${start} and ${end}: ${result}\n`);
-  }
+  // function testCheckIfInBetween(input, start, end) {
+  //   const result = checkIfInBetween(input, start, end);
+  //   console.log(`${input} is between ${start} and ${end}: ${result}\n`);
+  // }
 
-  testCheckIfInBetween("10:15", "10:00", "10:30");
-  testCheckIfInBetween("10:00", "10:00", "10:30");
-  testCheckIfInBetween("10:30", "10:00", "10:30");
-  testCheckIfInBetween("09:15", "10:00", "10:30");
-  testCheckIfInBetween("10:45", "10:00", "10:30");
-  testCheckIfInBetween("11:00", "10:00", "10:30");
-  testCheckIfInBetween("10:10", "10:20", "10:30");
-  testCheckIfInBetween("10:10", "10:20", "11:00");
-  testCheckIfInBetween("10:40", "09:20", "10:20");
-  testCheckIfInBetween("07:40", "09:20", "10:20");
-  testCheckIfInBetween("15:40", "09:20", "10:20");
-  testCheckIfInBetween("13:00", "06:00", "18:00");
-  testCheckIfInBetween("09:40", "10:00", "10:30");
-    testCheckIfInBetween("10:50", "10:00", "10:30");
+  // testCheckIfInBetween("10:15", "10:00", "10:30");
+  // testCheckIfInBetween("10:00", "10:00", "10:30");
+  // testCheckIfInBetween("10:30", "10:00", "10:30");
+  // testCheckIfInBetween("09:15", "10:00", "10:30");
+  // testCheckIfInBetween("10:45", "10:00", "10:30");
+  // testCheckIfInBetween("11:00", "10:00", "10:30");
+  // testCheckIfInBetween("10:10", "10:20", "10:30");
+  // testCheckIfInBetween("10:10", "10:20", "11:00");
+  // testCheckIfInBetween("10:40", "09:20", "10:20");
+  // testCheckIfInBetween("07:40", "09:20", "10:20");
+  // testCheckIfInBetween("15:40", "09:20", "10:20");
+  // testCheckIfInBetween("13:00", "06:00", "18:00");
+  // testCheckIfInBetween("09:40", "10:00", "10:30");
+  //   testCheckIfInBetween("10:50", "10:00", "10:30");
 
-  console.log("---")
+  // console.log("---")
 
-    function testCheckIfIntervalInBetween(input, start, end) {
-    const result = checkIfIntervalInBetween(input, start, end);
-    console.log(`${input} is between ${start} and ${end}: ${result}\n`);
-    }
+    // function testCheckIfIntervalInBetween(input, start, end) {
+    // const result = checkIfIntervalInBetween(input, start, end);
+    // console.log(`${input} is between ${start} and ${end}: ${result}\n`);
+    // }
   
-  testCheckIfIntervalInBetween("10:40-10:50", "10:00", "10:30")
-  testCheckIfIntervalInBetween("09:40-10:50", "10:00", "10:30")
-  testCheckIfIntervalInBetween("10:20-11:40", "10:00", "10:30")
-
+  // testCheckIfIntervalInBetween("10:40-10:50", "10:00", "10:30")
+  // testCheckIfIntervalInBetween("09:40-10:50", "10:00", "10:30")
+  // testCheckIfIntervalInBetween("10:40-11:40", "10:00", "10:30")
+  // testCheckIfIntervalInBetween("11:00-12:00", "10:00", "10:30")
+  // testCheckIfIntervalInBetween("11:00-12:00", "10:00", "13:30")
+  
   return null;
 }
