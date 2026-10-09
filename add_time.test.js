@@ -44,9 +44,14 @@ export function addTimeTest() {
       expected: "12:00",
     },
     {
-      title: "Correctly increments time when increment is over 120 minutes",
+      title: "Correctly increments time when increment is 120 minutes",
       input: ["10:30", "120"],
       expected: "12:30",
+    },
+    {
+      title: "Correctly increments time when increment is 299 minutes",
+      input: ["10:30", "299"],
+      expected: "15:29",
     },
   ];
 
