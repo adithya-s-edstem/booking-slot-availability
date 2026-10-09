@@ -19,9 +19,14 @@ export function addTimeTest() {
       expected: "02:09",
     },
     {
-      title: "Goes to next day when time goes over 24 hours",
+      title: "Goes to next day when hour goes over 23 hours",
       input: ["23:50", "20"],
       expected: "00:10",
+    },
+    {
+      title: "Goes to next hour when minute goes over 59 minutes",
+      input: ["10:30", "30"],
+      expected: "11:00",
     },
   ];
 
