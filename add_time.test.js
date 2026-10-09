@@ -18,6 +18,11 @@ export function addTimeTest() {
       input: ["01:21", "48"],
       expected: "02:09",
     },
+    {
+      title: "Goes to next day when time goes over 24 hours",
+      input: ["23:50", "20"],
+      expected: "00:10",
+    },
   ];
 
   const result = testOrchestrator("addTime", addTime, questions);
