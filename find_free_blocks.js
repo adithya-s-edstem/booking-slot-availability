@@ -27,6 +27,7 @@ export function findFreeBlocks(start, end, occupied_slots) {
   // Second to last free slots
 
   let counter = 0;
+  let end_reached = false;
 
   function incrementer() {
     let picked_slot = sorted_occupied_slots[counter];
@@ -37,6 +38,7 @@ export function findFreeBlocks(start, end, occupied_slots) {
     let new_free_slot;
     if (new_picked_slot === undefined) {
       new_free_slot = getValidTimeBlockOrNull(picked_slot_end, end);
+      end_reached = true;
     } else {
       let new_picked_slot_start = new_picked_slot.split("-")[0];
       new_free_slot = getValidTimeBlockOrNull(
@@ -48,10 +50,9 @@ export function findFreeBlocks(start, end, occupied_slots) {
     if (new_free_slot !== null) free_blocks.push(new_free_slot);
   }
 
-  // Need to rework this
-  [0, 1, 2].map(() => {
+  do {
     incrementer();
-  });
+  } while (!end_reached);
 
   return free_blocks;
 }
