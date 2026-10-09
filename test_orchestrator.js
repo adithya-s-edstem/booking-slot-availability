@@ -11,10 +11,10 @@ export function testOrchestrator(programName, program, questions) {
   questions.map((question) => {
     testCount += 1;
     const result = runTest(program, question.input, question.expected);
-    if (!result) {
-      failedCount += 1;
-      console.log(`\u274c FAIL: ${question.title}`);
-    }
+    if (!result) failedCount += 1;
+    console.log(
+      `${result ? "\u2705 PASS" : "\u274c FAIL"}: (${programName}) ${question.title}`,
+    );
   });
 
   console.log(

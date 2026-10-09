@@ -1,7 +1,8 @@
 import { findFreeBlocksTest } from "./find_free_blocks.test.js";
 import { findFreeSlotsTest } from "./find_free_slots.test.js";
+import { sortSlotsTest } from "./sort_slots.test.js";
 
-const tests = [findFreeBlocksTest, findFreeSlotsTest];
+const tests = [findFreeBlocksTest, findFreeSlotsTest, sortSlotsTest];
 
 function testAll() {
   let testCount = 0;
