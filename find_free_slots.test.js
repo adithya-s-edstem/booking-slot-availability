@@ -22,3 +22,5 @@ export function findFreeSlotsTest() {
 
   return { testCount: result.testCount, failedCount: result.failedCount };
 }
+
+findFreeSlotsTest();
