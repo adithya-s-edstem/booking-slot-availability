@@ -1,6 +1,7 @@
 function checkEqual(result, expected, type) {
   switch (type) {
     case "string":
+    case "null":
       if (result === expected) return true;
       return false;
     case "object":

@@ -1,3 +1,4 @@
+import { getValidTimeBlockOrNull } from "./get_valid_time_block_or_null.js";
 import { sortSlots } from "./sort_slots.js";
 
 export function findFreeBlocks(start, end, occupied_slots) {
@@ -12,7 +13,33 @@ export function findFreeBlocks(start, end, occupied_slots) {
 
   const sorted_occupied_slots = sortSlots(occupied_slots);
 
-  const first_slot = sorted_occupied_slots[0];
+  // First free slot
+
+  const first_occupied_slot = sorted_occupied_slots[0];
+
+  const first_free_slot = getValidTimeBlockOrNull(
+    start,
+    first_occupied_slot.split("-")[0],
+  );
+
+  if (first_free_slot !== null) free_blocks.push(first_free_slot);
+
+  // Second to last free slots
+
+  // let counter = 0;
+  // let picked_slot = sorted_occupied_slots[counter];
+  // let picked_slot_end = picked_slot.split("-")[1];
+  // counter++;
+  // let new_picked_slot = sorted_occupied_slots[counter];
+  // let new_picked_slot_start = new_picked_slot.split("-")[0];
+  // let new_free_slot = getValidTimeBlockOrNull(
+  //   picked_slot_end,
+  //   new_picked_slot_start,
+  // );
+
+  // if (new_free_slot !== null) free_blocks.push(new_free_slot);
+
+  console.log(free_blocks);
 
   return free_blocks;
 }
