@@ -18,7 +18,9 @@ const examples = [
   },
 ];
 
-console.log("Part A\n");
+console.log(
+  'Part A\nA meeting room has a list of bookings for one day. Each booking has a start and end time in 24-hour HH:MM format. Working hours are 09:00 to 18:00\nWrite a function "findFreeSlots(bookings, D)" which returns every free time slot within working hours that is atleast D minutes long.\n',
+);
 examples.map((example) => {
   const result = findFreeSlots(example.bookings, example.D);
 
