@@ -5,7 +5,7 @@ export function findSplitIntervalsTest() {
   const questions = [
     {
       title: "Returns split intervals between two times",
-      input: [["09:15", "09:25"], 3],
+      input: ["09:15", "09:25", 3],
       expected: ["09:15-09:18", "09:18-09:21", "09:21-09:24"],
     },
   ];
