@@ -17,5 +17,5 @@ export function testOrchestrator(program, questions) {
     }
   });
 
-  return { testCount, failedCount };
+  console.log(`Results: ${failedCount} out of ${testCount} tests failed`);
 }

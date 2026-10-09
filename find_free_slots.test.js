@@ -17,12 +17,4 @@ const questions = [
   },
 ];
 
-function main() {
-  const output = testOrchestrator(findFreeSlots, questions);
-
-  console.log(
-    `Results: ${output.failedCount} out of ${output.testCount} tests failed`,
-  );
-}
-
-main();
+testOrchestrator(findFreeSlots, questions);
