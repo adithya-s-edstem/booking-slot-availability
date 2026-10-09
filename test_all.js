@@ -1,4 +1,5 @@
 import { addTimeTest } from "./add_time.test.js";
+import { compareTimeTest } from "./compare_time.test.js";
 import { createAndValidateTimeBlockTest } from "./create_and_validate_time_block.test.js";
 import { findFreeBlocksTest } from "./find_free_blocks.test.js";
 import { findFreeSlotsTest } from "./find_free_slots.test.js";
@@ -16,6 +17,7 @@ const tests = [
   findSplitIntervalsTest,
   addTimeTest,
   padTimeTest,
+  compareTimeTest,
 ];
 
 function testAll() {
