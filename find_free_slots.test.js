@@ -4,7 +4,8 @@ import { testOrchestrator } from "./test_orchestrator.js";
 export function findFreeSlotsTest() {
   const questions = [
     {
-      title: "Returns free 60 minute slots when given a list of bookings",
+      title:
+        "Returns free 60 minute slots between 09:00 and 18:00 when given a list of bookings",
       input: [["09:00-10:00"], 60],
       expected: [
         "10:00-11:00",
@@ -16,6 +17,12 @@ export function findFreeSlotsTest() {
         "16:00-17:00",
         "17:00-18:00",
       ],
+    },
+    {
+      title:
+        "Returns free 300 minute slots between 09:00 and 18:00 when given a list of bookings",
+      input: [["09:00-10:00"], 300],
+      expected: ["10:00-15:00"],
     },
   ];
 
