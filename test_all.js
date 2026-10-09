@@ -7,20 +7,20 @@ import { getValidTimeBlockOrNullTest } from "./get_valid_time_block_or_null.test
 import { padTimeTest } from "./pad_time.test.js";
 import { sortSlotsTest } from "./sort_slots.test.js";
 
-const tests = [
-  findFreeSlotsTest,
-  findFreeBlocksTest,
-  sortSlotsTest,
-  getValidTimeBlockOrNullTest,
-  findSplitIntervalsTest,
-  addTimeTest,
-  padTimeTest,
-  compareTimeTest,
-];
-
 function testAll() {
   let testCount = 0;
   let failedCount = 0;
+
+  const tests = [
+    findFreeSlotsTest,
+    findFreeBlocksTest,
+    sortSlotsTest,
+    getValidTimeBlockOrNullTest,
+    findSplitIntervalsTest,
+    addTimeTest,
+    padTimeTest,
+    compareTimeTest,
+  ];
 
   console.log("\nTESTS \n");
 

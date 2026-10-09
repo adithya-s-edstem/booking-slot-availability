@@ -23,5 +23,3 @@ export function getValidTimeBlockOrNullTest() {
 
   return { testCount: result.testCount, failedCount: result.failedCount };
 }
-
-getValidTimeBlockOrNullTest();

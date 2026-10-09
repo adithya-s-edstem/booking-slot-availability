@@ -14,5 +14,3 @@ export function findFreeBlocksTest() {
 
   return { testCount: result.testCount, failedCount: result.failedCount };
 }
-
-findFreeBlocksTest();

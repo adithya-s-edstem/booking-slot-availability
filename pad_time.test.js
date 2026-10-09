@@ -80,5 +80,3 @@ export function padTimeTest() {
 
   return { testCount: result.testCount, failedCount: result.failedCount };
 }
-
-padTimeTest();

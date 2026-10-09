@@ -14,5 +14,3 @@ export function sortSlotsTest() {
 
   return { testCount: result.testCount, failedCount: result.failedCount };
 }
-
-sortSlotsTest();

@@ -59,5 +59,3 @@ export function addTimeTest() {
 
   return { testCount: result.testCount, failedCount: result.failedCount };
 }
-
-addTimeTest();

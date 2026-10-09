@@ -29,5 +29,3 @@ export function compareTimeTest() {
 
   return { testCount: result.testCount, failedCount: result.failedCount };
 }
-
-compareTimeTest();
