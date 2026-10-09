@@ -1,7 +1,26 @@
+function checkEqual(result, expected, type) {
+  switch (type) {
+    case "string":
+      if (result === expected) return true;
+      return false;
+    case "object":
+    case "undefined":
+      if (JSON.stringify(result) === JSON.stringify(expected)) return true;
+      return false;
+    default:
+      throw new Error("Invalid type");
+  }
+}
+
 function runTest(program, input, expected) {
-  const result = program(...input);
-  if (JSON.stringify(result) === JSON.stringify(expected)) return true;
-  return false;
+  let result;
+  try {
+    result = program(...input);
+  } catch (err) {
+    result = err.name;
+  }
+
+  return checkEqual(result, expected, typeof result);
 }
 
 export function testOrchestrator(programName, program, questions) {
