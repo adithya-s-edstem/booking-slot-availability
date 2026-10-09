@@ -5,8 +5,8 @@ import { getValidTimeBlockOrNullTest } from "./get_valid_time_block_or_null.test
 import { sortSlotsTest } from "./sort_slots.test.js";
 
 const tests = [
-  findFreeBlocksTest,
   findFreeSlotsTest,
+  findFreeBlocksTest,
   sortSlotsTest,
   createAndValidateTimeBlockTest,
   getValidTimeBlockOrNullTest,
