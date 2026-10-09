@@ -4,7 +4,7 @@ function runTest(program, input, expected) {
   return false;
 }
 
-export function testOrchestrator(program, questions) {
+export function testOrchestrator(programName, program, questions) {
   let testCount = 0;
   let failedCount = 0;
 
@@ -17,5 +17,9 @@ export function testOrchestrator(program, questions) {
     }
   });
 
-  console.log(`Results: ${failedCount} out of ${testCount} tests failed`);
+  console.log(
+    `${programName}: ${failedCount} out of ${testCount} tests failed`,
+  );
+
+  return { testCount, failedCount };
 }
