@@ -13,7 +13,7 @@ export function testOrchestrator(program, questions) {
     const result = runTest(program, question.input, question.expected);
     if (!result) {
       failedCount += 1;
-      console.log(`FAIL: ${question.title}`);
+      console.log(`\u274c FAIL: ${question.title}`);
     }
   });
 
