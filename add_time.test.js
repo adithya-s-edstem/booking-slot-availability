@@ -28,6 +28,26 @@ export function addTimeTest() {
       input: ["10:30", "30"],
       expected: "11:00",
     },
+    {
+      title: "Correctly increments time when increment is 60 minutes",
+      input: ["10:30", "60"],
+      expected: "11:30",
+    },
+    {
+      title: "Correctly increments time when increment is over 60 minutes",
+      input: ["10:30", "70"],
+      expected: "11:40",
+    },
+    {
+      title: "Correctly increments time when increment is 90 minutes",
+      input: ["10:30", "90"],
+      expected: "12:00",
+    },
+    {
+      title: "Correctly increments time when increment is over 120 minutes",
+      input: ["10:30", "120"],
+      expected: "12:30",
+    },
   ];
 
   const result = testOrchestrator("addTime", addTime, questions);

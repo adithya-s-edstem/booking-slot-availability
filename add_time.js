@@ -9,8 +9,9 @@ export function addTime(value, increment) {
   new_minute = new_minute + Number(increment);
 
   if (new_minute >= 60) {
-    new_minute = Math.abs(60 - new_minute);
-    new_hour += 1;
+    let number_of_hours_passed = Math.floor(new_minute / 60);
+    new_minute = Math.floor(new_minute % 60);
+    new_hour += number_of_hours_passed;
   }
 
   if (new_hour > 23) {
