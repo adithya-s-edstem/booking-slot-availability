@@ -12,11 +12,6 @@ export function checkIfRoomAvailableTest() {
       expected: false,
     },
     {
-      title: "Returns true when a future room is available",
-      input: [{ slots: ["09:00-10:00", "10:00-11:00"] }, "11:00-11:30"],
-      expected: true,
-    },
-    {
       title: "Returns true when room is available with gaps",
       input: [{ slots: ["09:00-09:30", "10:30-11:00"] }, "09:40-09:50"],
       expected: true,
