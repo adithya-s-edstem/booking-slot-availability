@@ -1,4 +1,5 @@
 import { addTimeTest } from "./add_time.test.js";
+import { checkIfRoomAvailableTest } from "./check_if_room_available.test.js";
 import { checkIfTimeInBetweenTest } from "./check_if_time_inbetween.test.js";
 import { compareTimeTest } from "./compare_time.test.js";
 import { findFreeBlocksTest } from "./find_free_blocks.test.js";
@@ -24,6 +25,7 @@ function testAll() {
     compareTimeTest,
     minRoomsNeededTest,
     checkIfTimeInBetweenTest,
+    checkIfRoomAvailableTest,
   ];
 
   console.log("\nTESTS \n");
