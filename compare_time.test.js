@@ -23,6 +23,11 @@ export function compareTimeTest() {
       input: ["12:00", "13:00", "later"],
       expected: false,
     },
+    {
+      title: "12:00 is equal to 12:00",
+      input: ["12:00", "12:00", "equal"],
+      expected: true,
+    },
   ];
 
   const result = testOrchestrator("compareTime", compareTime, questions);

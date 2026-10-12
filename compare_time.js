@@ -20,6 +20,11 @@ export function compareTime(a, b, type) {
         if (a_minute < b_minute) return true;
       }
       return false;
+    case "equal":
+      if (a_hour === b_hour && a_minute === b_minute) {
+        return true;
+      }
+      return false;
     default:
       throw new Error("Invalid type");
   }
