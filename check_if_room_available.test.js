@@ -37,6 +37,16 @@ export function checkIfRoomAvailableTest() {
       input: [{ slots: ["09:00-09:30", "10:30-11:00"] }, "10:00-10:30"],
       expected: true,
     },
+    {
+      title: "Returns false when start time is available but end time is not",
+      input: [{ slots: ["09:00-09:30", "10:30-11:00"] }, "09:40-10:45"],
+      expected: false,
+    },
+    {
+      title: "Returns false when start time is not available but end time is",
+      input: [{ slots: ["09:00-09:30", "10:30-11:00"] }, "09:10-10:20"],
+      expected: false,
+    },
   ];
 
   const result = testOrchestrator(
