@@ -20,12 +20,17 @@ export function checkIfRoomAvailable(room, requested_slot) {
     const [start, end] = selected_slot.split("-");
 
     if (
-      compareTime(r_start, start, "earlier") &&
-      compareTime(r_end, end, "later")
+      compareTime(r_start, start, "later") ||
+      compareTime(r_start, start, "equal")
     ) {
-      not_in_any_bookings = false;
-    } else {
-      not_in_any_bookings = true;
+      if (
+        compareTime(r_end, end, "earlier") ||
+        compareTime(r_end, end, "equal")
+      ) {
+        not_in_any_bookings = false;
+      } else {
+        not_in_any_bookings = true;
+      }
     }
 
     if (i < slots.length) {
