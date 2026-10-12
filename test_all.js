@@ -4,6 +4,7 @@ import { findFreeBlocksTest } from "./find_free_blocks.test.js";
 import { findFreeSlotsTest } from "./find_free_slots.test.js";
 import { findSplitIntervalsTest } from "./find_split_intervals.test.js";
 import { getValidTimeBlockOrNullTest } from "./get_valid_time_block_or_null.test.js";
+import { minRoomsNeededTest } from "./min_rooms_needed.test.js";
 import { padTimeTest } from "./pad_time.test.js";
 import { sortSlotsTest } from "./sort_slots.test.js";
 
@@ -20,6 +21,7 @@ function testAll() {
     addTimeTest,
     padTimeTest,
     compareTimeTest,
+    minRoomsNeededTest,
   ];
 
   console.log("\nTESTS \n");
