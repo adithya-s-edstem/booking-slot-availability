@@ -4,7 +4,7 @@ import { testOrchestrator } from "./test_orchestrator.js";
 export function checkIfRoomAvailableTest() {
   const questions = [
     {
-      title: "Returns false when room is not available",
+      title: "Returns false when no slots are available",
       input: [
         { slots: ["09:00-10:00", "09:30-10:30", "10:00-11:00"] },
         "09:15-09:20",
