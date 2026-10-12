@@ -47,6 +47,16 @@ export function checkIfRoomAvailableTest() {
       input: [{ slots: ["09:00-09:30", "10:30-11:00"] }, "09:10-10:20"],
       expected: false,
     },
+    {
+      title: "Returns true when slot is before all bookings",
+      input: [{ slots: ["09:00-09:30", "10:30-11:00"] }, "08:00-09:00"],
+      expected: true,
+    },
+    {
+      title: "Returns true when slot is after all bookings",
+      input: [{ slots: ["09:00-09:30", "10:30-11:00"] }, "11:00-11:30"],
+      expected: true,
+    },
   ];
 
   const result = testOrchestrator(
