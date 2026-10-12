@@ -17,12 +17,12 @@ export function checkIfRoomAvailableTest() {
       expected: true,
     },
     {
-      title: "Returns true when room is available",
+      title: "Returns true when room is available with gaps",
       input: [{ slots: ["09:00-09:30", "10:30-11:00"] }, "09:40-09:50"],
       expected: true,
     },
     {
-      title: "Returns true when a tightly placed room is available",
+      title: "Returns true when a room is available without gaps",
       input: [{ slots: ["09:00-09:30", "10:30-11:00"] }, "09:30-10:30"],
       expected: true,
     },
